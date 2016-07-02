@@ -1,0 +1,34 @@
+<div ng-controller='dashboardController'>
+	<div class='container'>
+		<div class='row'>
+			<div class='col-xs-4'>
+				<h3>Hi {{logged_in_user.username}}</h3>
+				<a href='#/question'>Add a Question</a>
+			</div>
+			<div class='col-xs-4'>
+			</div>
+			<div class='col-xs-4'>
+				<a href='#' ng-click='logout()'>Logout</a>
+				<div class='form-group'>
+					<label>Search:</label>
+					<input type='text' class='form-control' ng-model='search'>
+				</div>
+			</div>
+				<table class='table table-striped'>
+					<tr>
+						<th>Questions</th>
+						<th>Answers</th>
+						<th colspan='2'>Actions</th>
+					</tr>
+					<tr ng-repeat="question in questions | filter:search | orderBy: '-createdAt'">
+						<input type='hidden' value='{{question.createdAt}}'>
+						<td>{{question.question}}</td>
+						<td>{{question._answers.length}}</td>
+						<td><a href='#/questionAnswer/{{question._id}}'>Show</a></td>
+						<td><a href='#/answer/{{question._id}}'>Answer</a></td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>

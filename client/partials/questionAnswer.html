@@ -1,0 +1,28 @@
+<div ng-controller='questionAnswersController'>
+	{{comment}}
+	<div class='container'>
+		<div class='row'>
+			<div class='col-xs-12'>
+				<a href='#/dashboard'>Home | </a>
+				<a href='#/answer/{{question._id}}'>Answer this question | </a>
+				<a href='#' ng-click='logout()'>Logout</a>
+				<h3>{{question.question}}</h3>
+				<h4>{{question.description}}</h1>
+				<hr>
+				<div ng-repeat="answer in question._answers track by $index | orderBy: 'question._answers.likes'">
+					<div class='answer_box'>
+						<p>Name: {{answer._user.username}}: </p>
+						<p>Answer: {{answer.answer}}</p>
+						<p>Details: {{answer.details}}</p>
+						<div class='likes' style='display: inline-block'>
+							<p>{{answer.likes}} Likes</p>
+							<button class='btn btn-default btn-sm' ng-click='like(answer._id, question._id)'>Like!</button>
+						</div>
+						<hr>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
