@@ -9,8 +9,9 @@
 				<h3>{{question.question}}</h3>
 				<h4>{{question.description}}</h1>
 				<hr>
-				<div ng-repeat="answer in question._answers track by $index | orderBy: 'question._answers.likes'">
-					<div class='answer_box'>
+				<div ng-repeat="answer in question._answers | orderBy:'-likes' track by $index">
+					<div class='answer_box' >
+
 						<p>Name: {{answer._user.username}}: </p>
 						<p>Answer: {{answer.answer}}</p>
 						<p>Details: {{answer.details}}</p>
